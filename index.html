@@ -1,0 +1,1303 @@
+<!doctype html>
+<html>
+  <head>
+    <title>WaterTracker</title>
+    <style type="text/css">
+      body {
+      	font-family: Trebuchet MS, sans-serif;
+      	font-size: 15px;
+      	color: #444;
+      	margin-right: 24px;
+      }
+      
+      h1	{
+      	font-size: 25px;
+      }
+      h2	{
+      	font-size: 20px;
+      }
+      h3	{
+      	font-size: 16px;
+      	font-weight: bold;
+      }
+      hr	{
+      	height: 1px;
+      	border: 0;
+      	color: #ddd;
+      	background-color: #ddd;
+      }
+      
+      .app-desc {
+        clear: both;
+        margin-left: 20px;
+      }
+      .param-name {
+        width: 100%;
+      }
+      .license-info {
+        margin-left: 20px;
+      }
+      
+      .license-url {
+        margin-left: 20px;
+      }
+      
+      .model {
+        margin: 0 0 0px 20px;
+      }
+      
+      .method {
+        margin-left: 20px;
+      }
+      
+      .method-notes	{
+      	margin: 10px 0 20px 0;
+      	font-size: 90%;
+      	color: #555;
+      }
+      
+      pre {
+        padding: 10px;
+        margin-bottom: 2px;
+      }
+      
+      .http-method {
+       text-transform: uppercase;
+      }
+      
+      pre.get {
+        background-color: #0f6ab4;
+      }
+      
+      pre.post {
+        background-color: #10a54a;
+      }
+      
+      pre.put {
+        background-color: #c5862b;
+      }
+      
+      pre.delete {
+        background-color: #a41e22;
+      }
+      
+      .huge	{
+      	color: #fff;
+      }
+      
+      pre.example {
+        background-color: #f3f3f3;
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+      
+      code {
+        white-space: pre;
+      }
+      
+      .nickname {
+        font-weight: bold;
+      }
+      
+      .method-path {
+        font-size: 1.5em;
+        background-color: #0f6ab4;
+      }
+      
+      .up {
+        float:right;
+      }
+      
+      .parameter {
+        width: 500px;
+      }
+      
+      .param {
+        width: 500px;
+        padding: 10px 0 0 20px;
+        font-weight: bold;
+      }
+      
+      .param-desc {
+        width: 700px;
+        padding: 0 0 0 20px;
+        color: #777;
+      }
+      
+      .param-type {
+        font-style: italic;
+      }
+      
+      .param-enum-header {
+      width: 700px;
+      padding: 0 0 0 60px;
+      color: #777;
+      font-weight: bold;
+      }
+      
+      .param-enum {
+      width: 700px;
+      padding: 0 0 0 80px;
+      color: #777;
+      font-style: italic;
+      }
+      
+      .field-label {
+        padding: 0;
+        margin: 0;
+        clear: both;
+      }
+      
+      .field-items	{
+      	padding: 0 0 15px 0;
+      	margin-bottom: 15px;
+      }
+      
+      .return-type {
+        clear: both;
+        padding-bottom: 10px;
+      }
+      
+      .param-header {
+        font-weight: bold;
+      }
+      
+      .method-tags {
+        text-align: right;
+      }
+      
+      .method-tag {
+        background: none repeat scroll 0% 0% #24A600;
+        border-radius: 3px;
+        padding: 2px 10px;
+        margin: 2px;
+        color: #FFF;
+        display: inline-block;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+  <h1>WaterTracker</h1>
+    <div class="app-desc">WaterTracker API</div>
+    <div class="app-desc">More information: <a href="https://helloreverb.com">https://helloreverb.com</a></div>
+    <div class="app-desc">Contact Info: <a href="hello@helloreverb.com">hello@helloreverb.com</a></div>
+    <div class="app-desc">Version: 1.0.8</div>
+    
+    <div class="license-info">All rights reserved</div>
+    <div class="license-url">http://apache.org/licenses/LICENSE-2.0.html</div>
+  <h2>Access</h2>
+    <ol>
+      <li></li>
+    </ol>
+
+  <h2><a name="__Methods">Methods</a></h2>
+  [ Jump to <a href="#__Models">Models</a> ]
+
+  <h3>Table of Contents </h3>
+  <div class="method-summary"></div>
+  <h4><a href="#Auth">Auth</a></h4>
+  <ul>
+  <li><a href="#apiAuthForgotPasswordGet"><code><span class="http-method">get</span> /api/auth/forgot-password</code></a></li>
+  <li><a href="#apiAuthLoginPost"><code><span class="http-method">post</span> /api/auth/login</code></a></li>
+  <li><a href="#apiAuthLogoutPost"><code><span class="http-method">post</span> /api/auth/logout</code></a></li>
+  <li><a href="#apiAuthRegisterPost"><code><span class="http-method">post</span> /api/auth/register</code></a></li>
+  <li><a href="#apiAuthVerifyPost"><code><span class="http-method">post</span> /api/auth/verify</code></a></li>
+  <li><a href="#apiAuthVerifyVerificationCodeGet"><code><span class="http-method">get</span> /api/auth/verify/{verificationCode}</code></a></li>
+  </ul>
+  <h4><a href="#User">User</a></h4>
+  <ul>
+  <li><a href="#apiUserAvatarsPatch"><code><span class="http-method">patch</span> /api/user/avatars</code></a></li>
+  <li><a href="#apiUserCurrentGet"><code><span class="http-method">get</span> /api/user/current</code></a></li>
+  <li><a href="#apiUserCurrentPut"><code><span class="http-method">put</span> /api/user/current</code></a></li>
+  <li><a href="#apiUserDelete"><code><span class="http-method">delete</span> /api/user</code></a></li>
+  </ul>
+  <h4><a href="#Waters">Waters</a></h4>
+  <ul>
+  <li><a href="#apiWatersIdDelete"><code><span class="http-method">delete</span> /api/waters/{id}</code></a></li>
+  <li><a href="#apiWatersIdPut"><code><span class="http-method">put</span> /api/waters/{id}</code></a></li>
+  <li><a href="#apiWatersPerMonthGet"><code><span class="http-method">get</span> /api/waters/per_month</code></a></li>
+  <li><a href="#apiWatersPost"><code><span class="http-method">post</span> /api/waters</code></a></li>
+  <li><a href="#apiWatersTodayGet"><code><span class="http-method">get</span> /api/waters/today</code></a></li>
+  <li><a href="#apiWatersWaterRatePatch"><code><span class="http-method">patch</span> /api/waters/water_rate</code></a></li>
+  </ul>
+
+  <h1><a name="Auth">Auth</a></h1>
+  <div class="method"><a name="apiAuthForgotPasswordGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/auth/forgot-password</code></pre></div>
+    <div class="method-summary">User verification (<span class="nickname">apiAuthForgotPasswordGet</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">email (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Custom email format (email) </div>    </div>  <!-- field-items -->
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Temporary password has been sent to your email
+        <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Validation error or Empty body
+        <a href="#errorBadRequestResponse">errorBadRequestResponse</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiAuthLoginPost"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /api/auth/login</code></pre></div>
+    <div class="method-summary">User login (<span class="nickname">apiAuthLoginPost</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#RegistrationRequest">RegistrationRequest</a> (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Login user </div>
+                </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#LoginResponse">LoginResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "message" : "Login UserEmail successful",
+  "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MGMxNDYxNGM1MGRiMTNjNjk1N2MxMiIsImlhdCI6MTcxMjA2NzcyMiwiZXhwIjoxNzEyMTUwNTIyfQ.dftMsB6Sz2bzb5HEYmGWRgM9G3tAdTXVH0rYrxW4b6U"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Login successful
+        <a href="#LoginResponse">LoginResponse</a>
+    <h4 class="field-label">400</h4>
+    Validation error or Empty body
+        <a href="#errorBadRequestResponse">errorBadRequestResponse</a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+        <a href="#errorUnauthorizedResponse">errorUnauthorizedResponse</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiAuthLogoutPost"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /api/auth/logout</code></pre></div>
+    <div class="method-summary">User logout (<span class="nickname">apiAuthLogoutPost</span>)</div>
+    <div class="method-notes">Logout user</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">204</h4>
+    User logout successfully
+        <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+        <a href="#errorUnauthorizedResponse">errorUnauthorizedResponse</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiAuthRegisterPost"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /api/auth/register</code></pre></div>
+    <div class="method-summary">User registration (<span class="nickname">apiAuthRegisterPost</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#RegistrationRequest">RegistrationRequest</a> (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Registration user </div>
+                </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#RegistrationResponse">RegistrationResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "message" : "message",
+  "status" : "status"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    New user is created
+        <a href="#RegistrationResponse">RegistrationResponse</a>
+    <h4 class="field-label">400</h4>
+    Validation error or Empty body
+        <a href="#errorBadRequestResponse">errorBadRequestResponse</a>
+    <h4 class="field-label">409</h4>
+    Email in use
+        <a href="#errorConflictResponse">errorConflictResponse</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiAuthVerifyPost"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /api/auth/verify</code></pre></div>
+    <div class="method-summary">User verification (<span class="nickname">apiAuthVerifyPost</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#VerificationRequest">VerificationRequest</a> (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Verification user email </div>
+                </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Verify email send success
+        <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Validation error or Empty body
+        <a href="#errorBadRequestResponse">errorBadRequestResponse</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiAuthVerifyVerificationCodeGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/auth/verify/{verificationCode}</code></pre></div>
+    <div class="method-summary">User verification (<span class="nickname">apiAuthVerifyVerificationCodeGet</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">verificationCode (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; verificationCode user </div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Email verify success
+        <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#errorBadRequestResponse">errorBadRequestResponse</a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="User">User</a></h1>
+  <div class="method"><a name="apiUserAvatarsPatch"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="patch"><code class="huge"><span class="http-method">patch</span> /api/user/avatars</code></pre></div>
+    <div class="method-summary">User's avatar (<span class="nickname">apiUserAvatarsPatch</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>multipart/form-data</code></li>
+    </ul>
+
+
+
+
+    <h3 class="field-label">Form parameters</h3>
+    <div class="field-items">
+      <div class="param">avatarURL (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash;  format: binary</div>    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#UserAvatarResponse">UserAvatarResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "avatarURL" : "https://res.cloudinary.com/dwlu2h8dv/image/upload/v1712338141/avatars/660dc04170132ea38d6dc147_IMG_3308.JPG.jpg"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    User avatar is add success
+        <a href="#UserAvatarResponse">UserAvatarResponse</a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#errorBadRequestResponse">errorBadRequestResponse</a>
+    <h4 class="field-label">401</h4>
+    Not authorized
+        <a href="#errorUnauthorizedResponse">errorUnauthorizedResponse</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiUserCurrentGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/user/current</code></pre></div>
+    <div class="method-summary">User's info (<span class="nickname">apiUserCurrentGet</span>)</div>
+    <div class="method-notes">Get user info</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#UserInfoResponse">UserInfoResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "gender" : "female",
+  "avatarURL" : "https://res.cloudinary.com/dwlu2h8dv/image/upload/v1712338141/avatars/660dc04170132ea38d6dc147_IMG_3308.JPG.jpg",
+  "name" : "UserName",
+  "verify" : true,
+  "waterRate" : 1201.2422856915173,
+  "email" : "email"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>multipart/form-data</code></li>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    All information about user
+        <a href="#UserInfoResponse">UserInfoResponse</a>
+    <h4 class="field-label">401</h4>
+    Unautorized
+        <a href="#errorUnauthorizedResponse">errorUnauthorizedResponse</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiUserCurrentPut"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /api/user/current</code></pre></div>
+    <div class="method-summary">User's update info (<span class="nickname">apiUserCurrentPut</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#UserUpdateInfoRequest">UserUpdateInfoRequest</a> (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; User&#x27;s new info </div>
+                </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#UserInfoResponse">UserInfoResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "gender" : "female",
+  "avatarURL" : "https://res.cloudinary.com/dwlu2h8dv/image/upload/v1712338141/avatars/660dc04170132ea38d6dc147_IMG_3308.JPG.jpg",
+  "name" : "UserName",
+  "verify" : true,
+  "waterRate" : 1201.2422856915173,
+  "email" : "email"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>multipart/form-data</code></li>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    The user data change was successful
+        <a href="#UserInfoResponse">UserInfoResponse</a>
+    <h4 class="field-label">400</h4>
+    Bad request
+        <a href="#errorBadRequestResponse">errorBadRequestResponse</a>
+    <h4 class="field-label">401</h4>
+    Unautorized
+        <a href="#errorUnauthorizedResponse">errorUnauthorizedResponse</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiUserDelete"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /api/user</code></pre></div>
+    <div class="method-summary">User delete (<span class="nickname">apiUserDelete</span>)</div>
+    <div class="method-notes">Delete user account</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">204</h4>
+    User account delete successfully
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Waters">Waters</a></h1>
+  <div class="method"><a name="apiWatersIdDelete"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /api/waters/{id}</code></pre></div>
+    <div class="method-summary">Delete water point user by id (<span class="nickname">apiWatersIdDelete</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; water point Id </div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">204</h4>
+    Water point is delete success
+        <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#errorBadRequestResponse">errorBadRequestResponse</a>
+    <h4 class="field-label">401</h4>
+    Unautorized
+        <a href="#errorUnauthorizedResponse">errorUnauthorizedResponse</a>
+    <h4 class="field-label">404</h4>
+    There are not portions with id &lt;id&gt;
+        <a href="#errorNotFoundResponse">errorNotFoundResponse</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiWatersIdPut"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /api/waters/{id}</code></pre></div>
+    <div class="method-summary">Water point user by id (<span class="nickname">apiWatersIdPut</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; change user water point by waterID </div>    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#WaterPointUpdateByIdRequest">WaterPointUpdateByIdRequest</a> (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Add information for point water </div>
+                </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#WaterPointUpdateByIdResponse">WaterPointUpdateByIdResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "waterPortion" : {
+    "amount" : 500,
+    "month" : "2000-01-23T04:56:07.000+00:00",
+    "year" : 2022,
+    "time" : "12:50",
+    "_id" : "660fcb094665f6bc79423d3e",
+    "day" : "2000-01-23"
+  }
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Change water point user by id is success
+        <a href="#WaterPointUpdateByIdResponse">WaterPointUpdateByIdResponse</a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#errorBadRequestResponse">errorBadRequestResponse</a>
+    <h4 class="field-label">401</h4>
+    Unautorized
+        <a href="#errorUnauthorizedResponse">errorUnauthorizedResponse</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiWatersPerMonthGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/waters/per_month</code></pre></div>
+    <div class="method-summary">User water per monts volume (<span class="nickname">apiWatersPerMonthGet</span>)</div>
+    <div class="method-notes">Info about user water volume per month</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">date (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Custom date format (MM-YYYY) </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#WaterInfoPerMonthResponse">WaterInfoPerMonthResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "month" : "2000-01-23T04:56:07.000+00:00",
+  "year" : 2022,
+  "waterForMonth" : [ {
+    "totalPortionsOfWater" : 0.8008281904610115,
+    "date" : "2000-01-23",
+    "dailyNorm" : "1.5 L",
+    "percentageWater" : "73.33 %"
+  }, {
+    "totalPortionsOfWater" : 0.8008281904610115,
+    "date" : "2000-01-23",
+    "dailyNorm" : "1.5 L",
+    "percentageWater" : "73.33 %"
+  } ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    User point per_month
+        <a href="#WaterInfoPerMonthResponse">WaterInfoPerMonthResponse</a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#errorBadRequestResponse">errorBadRequestResponse</a>
+    <h4 class="field-label">401</h4>
+    Not authorized
+        <a href="#errorUnauthorizedResponse">errorUnauthorizedResponse</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiWatersPost"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /api/waters</code></pre></div>
+    <div class="method-summary">User's add water points (<span class="nickname">apiWatersPost</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#UserWaterPointRequest">UserWaterPointRequest</a> (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Add information for point water </div>
+                </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#UserWaterPointResponse">UserWaterPointResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "WaterData" : {
+    "amount" : 500,
+    "month" : "2000-01-23T04:56:07.000+00:00",
+    "year" : 2022,
+    "time" : "12:50",
+    "day" : "2000-01-23"
+  }
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    New water portion is added successful
+        <a href="#UserWaterPointResponse">UserWaterPointResponse</a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#errorBadRequestResponse">errorBadRequestResponse</a>
+    <h4 class="field-label">401</h4>
+    Unautorized
+        <a href="#errorUnauthorizedResponse">errorUnauthorizedResponse</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiWatersTodayGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/waters/today</code></pre></div>
+    <div class="method-summary">User water volume today (<span class="nickname">apiWatersTodayGet</span>)</div>
+    <div class="method-notes">Info about user water volume today</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">date (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Custom date format (DD-MM-YYYY) </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#WaterInfoTodayResponse">WaterInfoTodayResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "allAmountForDay" : 3500,
+  "portionsOfWater" : [ {
+    "amount" : 500,
+    "time" : "12:51",
+    "_id" : "660fcb094665f6bc79423d3e"
+  }, {
+    "amount" : 500,
+    "time" : "12:51",
+    "_id" : "660fcb094665f6bc79423d3e"
+  } ],
+  "month" : "2000-01-23T04:56:07.000+00:00",
+  "year" : 2022,
+  "percentageWater" : "73.33%",
+  "waterRateForThisDay" : 2500,
+  "day" : "2000-01-23"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    User point today
+        <a href="#WaterInfoTodayResponse">WaterInfoTodayResponse</a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#errorBadRequestResponse">errorBadRequestResponse</a>
+    <h4 class="field-label">401</h4>
+    Not authorized
+        <a href="#errorUnauthorizedResponse">errorUnauthorizedResponse</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiWatersWaterRatePatch"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="patch"><code class="huge"><span class="http-method">patch</span> /api/waters/water_rate</code></pre></div>
+    <div class="method-summary">Update user's water_rate (<span class="nickname">apiWatersWaterRatePatch</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#UserWaterRateUpdateRequest">UserWaterRateUpdateRequest</a> (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Update wate_rate of user </div>
+                </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Water Rate was changed successful
+        <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#errorBadRequestResponse">errorBadRequestResponse</a>
+  </div> <!-- method -->
+  <hr/>
+
+  <h2><a name="__Models">Models</a></h2>
+  [ Jump to <a href="#__Methods">Methods</a> ]
+
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><a href="#LoginResponse"><code>LoginResponse</code></a></li>
+    <li><a href="#RegistrationRequest"><code>RegistrationRequest</code></a></li>
+    <li><a href="#RegistrationResponse"><code>RegistrationResponse</code></a></li>
+    <li><a href="#UserAvatarRequest"><code>UserAvatarRequest</code></a></li>
+    <li><a href="#UserAvatarResponse"><code>UserAvatarResponse</code></a></li>
+    <li><a href="#UserInfoResponse"><code>UserInfoResponse</code></a></li>
+    <li><a href="#UserUpdateInfoRequest"><code>UserUpdateInfoRequest</code></a></li>
+    <li><a href="#UserWaterPointRequest"><code>UserWaterPointRequest</code></a></li>
+    <li><a href="#UserWaterPointResponse"><code>UserWaterPointResponse</code></a></li>
+    <li><a href="#UserWaterPointResponse_WaterData"><code>UserWaterPointResponse_WaterData</code></a></li>
+    <li><a href="#UserWaterRateUpdateRequest"><code>UserWaterRateUpdateRequest</code></a></li>
+    <li><a href="#VerificationRequest"><code>VerificationRequest</code></a></li>
+    <li><a href="#WaterInfoPerMonthResponse"><code>WaterInfoPerMonthResponse</code></a></li>
+    <li><a href="#WaterInfoPerMonthResponse_waterForMonth"><code>WaterInfoPerMonthResponse_waterForMonth</code></a></li>
+    <li><a href="#WaterInfoTodayResponse"><code>WaterInfoTodayResponse</code></a></li>
+    <li><a href="#WaterInfoTodayResponse_portionsOfWater"><code>WaterInfoTodayResponse_portionsOfWater</code></a></li>
+    <li><a href="#WaterPointUpdateByIdRequest"><code>WaterPointUpdateByIdRequest</code></a></li>
+    <li><a href="#WaterPointUpdateByIdResponse"><code>WaterPointUpdateByIdResponse</code></a></li>
+    <li><a href="#WaterPointUpdateByIdResponse_waterPortion"><code>WaterPointUpdateByIdResponse_waterPortion</code></a></li>
+    <li><a href="#errorBadRequestResponse"><code>errorBadRequestResponse</code></a></li>
+    <li><a href="#errorConflictResponse"><code>errorConflictResponse</code></a></li>
+    <li><a href="#errorNotFoundResponse"><code>errorNotFoundResponse</code></a></li>
+    <li><a href="#errorUnauthorizedResponse"><code>errorUnauthorizedResponse</code></a></li>
+  </ol>
+
+  <div class="model">
+    <h3><a name="LoginResponse"><code>LoginResponse</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">message (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: Login UserEmail successful</span></div>
+<div class="param">token </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MGMxNDYxNGM1MGRiMTNjNjk1N2MxMiIsImlhdCI6MTcxMjA2NzcyMiwiZXhwIjoxNzEyMTUwNTIyfQ.dftMsB6Sz2bzb5HEYmGWRgM9G3tAdTXVH0rYrxW4b6U</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="RegistrationRequest"><code>RegistrationRequest</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">email </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> User&#x27;s email format: email</div>
+<div class="param">password </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> User&#x27;s password format: password</div>
+          <div class="param-desc"><span class="param-type">example: qwerty12345</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="RegistrationResponse"><code>RegistrationResponse</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">status (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> 201 </div>
+<div class="param">message (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> New user is created </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="UserAvatarRequest"><code>UserAvatarRequest</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">avatarURL (optional)</div><div class="param-desc"><span class="param-type"><a href="#binary">byte[]</a></span>  format: binary</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="UserAvatarResponse"><code>UserAvatarResponse</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">avatarURL (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: https://res.cloudinary.com/dwlu2h8dv/image/upload/v1712338141/avatars/660dc04170132ea38d6dc147_IMG_3308.JPG.jpg</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="UserInfoResponse"><code>UserInfoResponse</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">avatarURL (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Unique avatar of the user </div>
+          <div class="param-desc"><span class="param-type">example: https://res.cloudinary.com/dwlu2h8dv/image/upload/v1712338141/avatars/660dc04170132ea38d6dc147_IMG_3308.JPG.jpg</span></div>
+<div class="param">email (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> User&#x27;s email </div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: UserName</span></div>
+<div class="param">gender (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">male</div><div class="param-enum">female</div>
+          <div class="param-desc"><span class="param-type">example: female</span></div>
+<div class="param">waterRate (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">verify (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="UserUpdateInfoRequest"><code>UserUpdateInfoRequest</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> User&#x27;s display name </div>
+<div class="param">email (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> User&#x27;s email format: email</div>
+<div class="param">outdatedPassword (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> User&#x27;s old password </div>
+<div class="param">newPassword (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> User&#x27;s password </div>
+<div class="param">gender (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> User&#x27;s gender </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">male</div><div class="param-enum">female</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="UserWaterPointRequest"><code>UserWaterPointRequest</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">date (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Custom date format (DD/MM/YYYY) </div>
+          <div class="param-desc"><span class="param-type">example: 12/03/2024</span></div>
+<div class="param">time (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  format: time</div>
+          <div class="param-desc"><span class="param-type">example: 12:51</span></div>
+<div class="param">waterAmount (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span> The amount of water </div>
+          <div class="param-desc"><span class="param-type">example: 500</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="UserWaterPointResponse"><code>UserWaterPointResponse</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">WaterData (optional)</div><div class="param-desc"><span class="param-type"><a href="#UserWaterPointResponse_WaterData">UserWaterPointResponse_WaterData</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="UserWaterPointResponse_WaterData"><code>UserWaterPointResponse_WaterData</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">day (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> The day of the month (two digits) format: date</div>
+<div class="param">month (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span>  format: date-time</div>
+<div class="param">year (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Year format: int32</div>
+          <div class="param-desc"><span class="param-type">example: 2022</span></div>
+<div class="param">time (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  format: time</div>
+          <div class="param-desc"><span class="param-type">example: 12:50</span></div>
+<div class="param">amount (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span> The amount of water </div>
+          <div class="param-desc"><span class="param-type">example: 500</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="UserWaterRateUpdateRequest"><code>UserWaterRateUpdateRequest</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">waterRate </div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span> User&#x27;s waterRate </div>
+<div class="param">date </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Custom date format (DD/MM/YYYY) </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="VerificationRequest"><code>VerificationRequest</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">email </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> User&#x27;s email format: email</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="WaterInfoPerMonthResponse"><code>WaterInfoPerMonthResponse</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">month (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span>  format: date-time</div>
+<div class="param">year (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Year format: int32</div>
+          <div class="param-desc"><span class="param-type">example: 2022</span></div>
+<div class="param">waterForMonth (optional)</div><div class="param-desc"><span class="param-type"><a href="#WaterInfoPerMonthResponse_waterForMonth">array[WaterInfoPerMonthResponse_waterForMonth]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="WaterInfoPerMonthResponse_waterForMonth"><code>WaterInfoPerMonthResponse_waterForMonth</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">totalPortionsOfWater </div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">date </div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span>  format: date</div>
+<div class="param">dailyNorm </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The daily water consumption norm </div>
+          <div class="param-desc"><span class="param-type">example: 1.5 L</span></div>
+<div class="param">percentageWater </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The percentage of water consumed </div>
+          <div class="param-desc"><span class="param-type">example: 73.33 %</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="WaterInfoTodayResponse"><code>WaterInfoTodayResponse</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">day (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> The day of the month (two digits) format: date</div>
+<div class="param">month (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span>  format: date-time</div>
+<div class="param">year (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Year format: int32</div>
+          <div class="param-desc"><span class="param-type">example: 2022</span></div>
+<div class="param">waterRateForThisDay (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span> The waterRate for this day </div>
+          <div class="param-desc"><span class="param-type">example: 2500</span></div>
+<div class="param">allAmountForDay (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span> The all amount waters of this day </div>
+          <div class="param-desc"><span class="param-type">example: 3500</span></div>
+<div class="param">percentageWater (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 73.33%</span></div>
+<div class="param">portionsOfWater (optional)</div><div class="param-desc"><span class="param-type"><a href="#WaterInfoTodayResponse_portionsOfWater">array[WaterInfoTodayResponse_portionsOfWater]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="WaterInfoTodayResponse_portionsOfWater"><code>WaterInfoTodayResponse_portionsOfWater</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">time </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  format: time</div>
+          <div class="param-desc"><span class="param-type">example: 12:51</span></div>
+<div class="param">amount </div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span> The amount of water </div>
+          <div class="param-desc"><span class="param-type">example: 500</span></div>
+<div class="param">_id </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 660fcb094665f6bc79423d3e</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="WaterPointUpdateByIdRequest"><code>WaterPointUpdateByIdRequest</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">time (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  format: time</div>
+          <div class="param-desc"><span class="param-type">example: 12:51</span></div>
+<div class="param">waterAmount (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span> The amount of water </div>
+          <div class="param-desc"><span class="param-type">example: 500</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="WaterPointUpdateByIdResponse"><code>WaterPointUpdateByIdResponse</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">waterPortion (optional)</div><div class="param-desc"><span class="param-type"><a href="#WaterPointUpdateByIdResponse_waterPortion">WaterPointUpdateByIdResponse_waterPortion</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="WaterPointUpdateByIdResponse_waterPortion"><code>WaterPointUpdateByIdResponse_waterPortion</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">day (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> The day of the month (two digits) format: date</div>
+<div class="param">month (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span>  format: date-time</div>
+<div class="param">year (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Year format: int32</div>
+          <div class="param-desc"><span class="param-type">example: 2022</span></div>
+<div class="param">time (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  format: time</div>
+          <div class="param-desc"><span class="param-type">example: 12:50</span></div>
+<div class="param">amount (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span> The amount of water </div>
+          <div class="param-desc"><span class="param-type">example: 500</span></div>
+<div class="param">_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The unique identifier of the water point </div>
+          <div class="param-desc"><span class="param-type">example: 660fcb094665f6bc79423d3e</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="errorBadRequestResponse"><code>errorBadRequestResponse</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">message (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Error message </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="errorConflictResponse"><code>errorConflictResponse</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">status (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Error status code </div>
+<div class="param">message (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Email in use </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="errorNotFoundResponse"><code>errorNotFoundResponse</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">message (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Not found </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="errorUnauthorizedResponse"><code>errorUnauthorizedResponse</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">status (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Error status code </div>
+<div class="param">message (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Not authorized </div>
+    </div>  <!-- field-items -->
+  </div>
+  </body>
+</html>
